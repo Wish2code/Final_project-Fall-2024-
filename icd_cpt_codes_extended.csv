@@ -1,21 +1,21 @@
-condition,icd_code,cpt_code,prescription,severity,SOD,diagnosis_status,,symptom1,symptom2,symptom3
-Red Eye,H578A1,92015,Lubricating eye drops,10247,Acute,Active,,headache,Eye redness, irritation
-Red Eye,H578A2,65205,Foreign body removal,10245,Acute,Active,,,,Eye redness, sensation of a foreign object in the eye, excessive watery discharge
-Red Eye,H578A3,92004,Eye wash,10247,Chronic,Relapse,,,,Persistent redness, irritation, history of previous episodes
-Red Eye,H5789,92015,Anti-inflammatory drops,10246,Chronic,Active,,,,Chronic redness, inflammation, discomfort
-Red Eye,H579,65205,Antibiotics,10246,Acute,Relapse,,,,Eye redness, acute infection or irritation, prior recurrence
-General Eye Disease,H4601,92018,Steroid injection,10246,Chronic,Active,,,,Chronic inflammation, vision changes, discomfort
-General Eye Disease,H4602,67028,Ophthalmic surgery,10245,Acute,Relapse,,,,Severe pain, swelling, vision loss
-General Eye Disease,H462,92133,Vitamin supplements,10247,Chronic,Active,,,,Eye fatigue, dry eye, reduced vision
-General Eye Disease,H463,92018,Toxin elimination,10246,Acute,Relapse,,,,Acute pain, vision disturbances, swelling
-General Eye Disease,H469,67028,General eye care,10247,Chronic,Active,,,,General eye discomfort, blurriness, irritation
-Myopia,H52311,92015,Glasses prescription,10247,Chronic,Active,,,,Blurry distance vision, squinting, headaches
-Myopia,H52312,92310,Contact lenses,10247,Chronic,Relapse,,,,Blurry distance vision, difficulty seeing signs, eye strain
-Myopia,H52313,92072,Special lenses,10246,Chronic,Active,,,,Blurry distance vision, sensitivity to light, progressive worsening
-Myopia,H52321,92310,Surgical consultation,10245,Acute,Relapse,,,,Sudden worsening of vision, squinting, headaches
-Myopia,H52322,92015,Eye exercises,10247,Chronic,Active,,,,Difficulty focusing, progressive worsening of vision, eye fatigue
-Pink Eye,H1010,92004,Antibiotic eye drops,10245,Acute,Active,,,,Redness, discharge, itching
-Pink Eye,H1011,65205,Warm compress,10247,Acute,Relapse,,,,Itchiness, swelling, watery eyes
-Pink Eye,H1012,99070,Ointment,10247,Chronic,Active,,,,Persistent redness, dry eye, sensitivity to light
-Pink Eye,H1013,92004,Steroid eye drops,10246,Chronic,Relapse,,,,Chronic inflammation, swelling, discharge
-Pink Eye,H1029,65205,Cold compress,10247,Acute,Active,,,,Acute irritation, redness, tearing
+condition,icd_code,cpt_code,prescription,severity,SOD,diagnosis_status,symptom1,symptom2,symptom3
+Red Eye,H578A1,92015,Lubricating eye drops,10247,Acute,Active,headache,Eye redness, irritation
+Red Eye,H578A2,65205,Foreign body removal,10245,Acute,Active,Eye redness, sensation of a foreign object in the eye, excessive watery discharge
+Red Eye,H578A3,92004,Eye wash,10247,Chronic,Relapse,Persistent redness, irritation, history of previous episodes
+Red Eye,H5789,92015,Anti-inflammatory drops,10246,Chronic,Active,Chronic redness, inflammation, discomfort
+Red Eye,H579,65205,Antibiotics,10246,Acute,Relapse,Eye redness, acute infection or irritation, prior recurrence
+General Eye Disease,H4601,92018,Steroid injection,10246,Chronic,Active,Chronic inflammation, vision changes, discomfort
+General Eye Disease,H4602,67028,Ophthalmic surgery,10245,Acute,Relapse,Severe pain, swelling, vision loss
+General Eye Disease,H462,92133,Vitamin supplements,10247,Chronic,Active,Eye fatigue, dry eye, reduced vision
+General Eye Disease,H463,92018,Toxin elimination,10246,Acute,Relapse,Acute pain, vision disturbances, swelling
+General Eye Disease,H469,67028,General eye care,10247,Chronic,Active,General eye discomfort, blurriness, irritation
+Myopia,H52311,92015,Glasses prescription,10247,Chronic,Active,Blurry distance vision, squinting, headaches
+Myopia,H52312,92310,Contact lenses,10247,Chronic,Relapse,Blurry distance vision, difficulty seeing signs, eye strain
+Myopia,H52313,92072,Special lenses,10246,Chronic,Active,Blurry distance vision, sensitivity to light, progressive worsening
+Myopia,H52321,92310,Surgical consultation,10245,Acute,Relapse,Sudden worsening of vision, squinting, headaches
+Myopia,H52322,92015,Eye exercises,10247,Chronic,Active,Difficulty focusing, progressive worsening of vision, eye fatigue
+Pink Eye,H1010,92004,Antibiotic eye drops,10245,Acute,Active,Redness, discharge, itching
+Pink Eye,H1011,65205,Warm compress,10247,Acute,Relapse,Itchiness, swelling, watery eyes
+Pink Eye,H1012,99070,Ointment,10247,Chronic,Active,Persistent redness, dry eye, sensitivity to light
+Pink Eye,H1013,92004,Steroid eye drops,10246,Chronic,Relapse,Chronic inflammation, swelling, discharge
+Pink Eye,H1029,65205,Cold compress,10247,Acute,Active,Acute irritation, redness, tearing
