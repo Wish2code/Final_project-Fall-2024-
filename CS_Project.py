@@ -1,6 +1,22 @@
-#New
 import csv
+import json
 from tabulate import tabulate
+
+
+def read_json(file_name):
+    """Reads a JSON file and returns the parsed data."""
+    try:
+        with open(file_name, mode='r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print(f"Error: The file '{file_name}' was not found.")
+        return []
+    except json.JSONDecodeError as e:
+        print(f"Error: Could not parse JSON from '{file_name}': {e}")
+        return []
+    except Exception as e:
+        print(f"An error occurred while reading '{file_name}': {e}")
+        return []
 
 
 def read_csv(file_name):
@@ -39,9 +55,10 @@ def diagnose_patient(symptoms, icd_data):
                 row["prescription"],
                 row["severity"],
                 row["SOD"],
-                row["diagnosis_status"]
+                row["diagnosis_status"],
+                row.get("Insurance", "Unknown")
             )
-    return "Unknown", "DNE", "Unknown", "Unknown", "Unknown", "Unknown"
+    return "Unknown", "DNE", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown"
 
 
 def process_symptoms(patient):
@@ -53,31 +70,56 @@ def process_symptoms(patient):
     ]
 
 
+def merge_patient_data(vitals, scheduling, insurance):
+    """Merges data from vitals, scheduling, and insurance sources."""
+    merged_data = []
+    for patient in vitals:
+        patient_id = patient.get("patient_id")
+        schedule = next((item for item in scheduling if item["patient_id"] == patient_id), {})
+        insurance_info = next((item for item in insurance if item["patient_id"] == patient_id), {})
+
+        merged_patient = {
+            **patient,
+            "appointment_date": schedule.get("appointment_date", "N/A"),
+            "appointment_time": schedule.get("time", "N/A"),
+            "insurance_provider": insurance_info.get("insurance_provider", "N/A"),
+            "policy_number": insurance_info.get("policy_number", "N/A"),
+            "coverage_details": insurance_info.get("coverage_details", "N/A"),
+        }
+        merged_data.append(merged_patient)
+    return merged_data
+
+
 def main():
     # File paths
-    symptoms_file = "symptoms.csv"
+    vitals_file = "Vitals_team.json"
+    scheduling_file = "scheduling.json"
+    insurance_file = "insurance.json"
     icd_cpt_file = "icd_cpt_codes_extended.csv"
     results_file = "diagnosis_results.csv"
 
-    # Load data from CSV files
-    symptoms_data = read_csv(symptoms_file)
+    # Load data
+    vitals_data = read_json(vitals_file)
+    scheduling_data = read_json(scheduling_file)
+    insurance_data = read_json(insurance_file)
     icd_cpt_data = read_csv(icd_cpt_file)
 
     # Validate data
-    if not symptoms_data or not icd_cpt_data:
+    if not vitals_data or not icd_cpt_data:
         print("Error: Missing or incomplete data files. Please check your input files.")
         return
 
+    # Merge data
+    merged_data = merge_patient_data(vitals_data, scheduling_data, insurance_data)
+
     # Prepare diagnosis results
     results = []
-    for patient in symptoms_data:
+    for patient in merged_data:
         patient_id = patient["patient_id"]
         symptoms = process_symptoms(patient)
-        eye = patient.get("Eye", "N/A")
-        onset_date = patient.get("Onset_date", "N/A")
 
         # Diagnose based on symptoms
-        diagnosis, icd_code, prescription, severity, SOD, diagnosis_status = diagnose_patient(symptoms, icd_cpt_data)
+        diagnosis, icd_code, prescription, severity, SOD, diagnosis_status, insurance = diagnose_patient(symptoms, icd_cpt_data)
 
         # Get CPT code
         cpt_code = next((row["cpt_code"] for row in icd_cpt_data if row["icd_code"] == icd_code), "DNE")
@@ -89,17 +131,25 @@ def main():
             "icd_code": icd_code,
             "prescription": prescription,
             "cpt_code": cpt_code,
-            "Eye": eye,
-            "Onset_date": onset_date,
+            "Eye": patient.get("Eye", "N/A"),
+            "Onset_date": patient.get("Onset_date", "N/A"),
+            "Insurance": insurance,
             "Diagnosis_status": diagnosis_status,
             "SOD": SOD,
-            "Severity": severity
+            "Severity": severity,
+            "appointment_date": patient.get("appointment_date", "N/A"),
+            "appointment_time": patient.get("appointment_time", "N/A"),
+            "insurance_provider": patient.get("insurance_provider", "N/A"),
+            "policy_number": patient.get("policy_number", "N/A"),
+            "coverage_details": patient.get("coverage_details", "N/A"),
         })
 
     # Save results to a CSV file
     fieldnames = [
         "patient_id", "diagnosis", "icd_code", "prescription", "cpt_code",
-        "Eye", "Onset_date", "Diagnosis_status", "SOD", "Severity"
+        "Eye", "Onset_date", "Diagnosis_status", "SOD", "Severity",
+        "appointment_date", "appointment_time", "insurance_provider",
+        "policy_number", "coverage_details"
     ]
     write_csv(results_file, fieldnames, results)
     print(f"Diagnosis complete! Results saved to '{results_file}'.")
@@ -111,7 +161,7 @@ def display_results(file_name):
         with open(file_name, mode='r') as file:
             reader = csv.reader(file)
             data = list(reader)
-        
+
         if not data:
             print("No data found in the results file.")
             return
@@ -120,7 +170,7 @@ def display_results(file_name):
         header = data[0]
         rows = data[1:]
 
-        # Use tabulate to create a fancy table
+        # Use tabulate to create a table
         print(tabulate(rows, headers=header, tablefmt="grid"))
     except FileNotFoundError:
         print(f"Error: The file '{file_name}' was not found.")
@@ -130,5 +180,10 @@ def display_results(file_name):
 
 if __name__ == "__main__":
     main()
-    print("\nDiagnosis Results:")
-    display_results("diagnosis_results.csv")
+    r = input('Do you want to view the diagnosis results (Y or N)?: ')
+    if r.upper() == 'Y':
+        print("\nDiagnosis Results:")
+        display_results("diagnosis_results.csv")
+    else:
+        print('HAVE A GOOD DAY!! :)')
+
