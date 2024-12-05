@@ -118,7 +118,8 @@ def main():
     # Prepare diagnosis results
     results = []
     for patient in merged_data:
-        patient_id = patient["patient_id"]
+        patient_info = patient["patient_info"]
+        patient_email = patient_info["email"][0]
         symptoms = process_symptoms(patient)
 
         # Diagnose based on symptoms
@@ -129,7 +130,7 @@ def main():
 
         # Append result
         results.append({
-            "patient_id": patient_id,
+            "patient_email": patient_email,
             "diagnosis": diagnosis,
             "icd_code": icd_code,
             "prescription": prescription,
