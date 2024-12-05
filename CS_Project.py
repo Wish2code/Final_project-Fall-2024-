@@ -128,7 +128,7 @@ def main():
     for patient in merged_data:
         patient_info = patient["personal_info"]
         health_data = patient["health_data"]
-        symptom_data = healt_data["symptoms"]
+        symptom_data = health_data["symptoms"]
         patient_email = patient_info["email"][0]
         symptoms = process_symptoms(symptom_data)
 
