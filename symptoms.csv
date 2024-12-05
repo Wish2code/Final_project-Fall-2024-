@@ -1,3 +1,3 @@
-patient_email,symptom1,symptom2,symptom3,Eye,Onset_date,Diagnosis_status,SOD,Severity
+patient_id,symptom1,symptom2,symptom3,Eye,Onset_date,Diagnosis_status,SOD,Severity
 patient@hospital.gov,blurred vision,itchy eyes,headache,None,None,None,None,None
 
