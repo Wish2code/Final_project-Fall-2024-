@@ -121,7 +121,7 @@ def main():
         patient_info = patient["personal_info"]
         sypmptoms = patient["health_data"]["symptoms"]
         patient_email = patient_info["email"][0]
-        symptoms = process_symptoms(patient)
+        symptoms = process_symptoms(symptoms)
 
         # Diagnose based on symptoms
         diagnosis, icd_code, prescription, severity, SOD, diagnosis_status, insurance = diagnose_patient(symptoms, icd_cpt_data)
