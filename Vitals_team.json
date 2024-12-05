@@ -13,9 +13,7 @@
         },
         "health_data": {
             "reason": [
-                "headache",
-                "Eye redness",
-                "irritation"
+                "myopia"
             ],
             "symptoms":{
                 "Symptom1": "headache",
@@ -71,9 +69,8 @@
         },
         "health_data": {
             "reason": [
-                "Chronic redness",
-                "inflammation",
-                "discomfort"
+                "pink eye",
+                "general-eye-checkup"
             ],
             "symptoms": {
                 "Symptom1": "Chronic redness",
