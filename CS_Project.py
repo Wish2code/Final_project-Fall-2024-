@@ -50,6 +50,8 @@ def diagnose_patient(symptoms, icd_data):
     print("symptoms in diagnose_patient:", symptoms)
     for row in icd_data:
         condition_symptoms = {row["symptom1"], row["symptom2"], row["symptom3"]}
+        print()
+        print("condition_symptoms in diagnose_patient", condition_symptoms)
         print(set(symptoms) & condition_symptoms)
         if len(set(symptoms) & condition_symptoms) > 1:  # Check for symptom overlap
             return (
