@@ -145,7 +145,7 @@ def main():
             "icd_code": icd_code,
             "prescription": prescription,
             "cpt_code": cpt_code,
-            "Eye": health_data["affected-eye"],
+            "Eye": health_data["affected-eye"][0],
             "Onset_date": health_data["onset"],
             "Insurance": insurance,
             "Diagnosis_status": diagnosis_status,
