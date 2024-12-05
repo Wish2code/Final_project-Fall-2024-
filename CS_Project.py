@@ -74,9 +74,9 @@ def merge_patient_data(vitals, scheduling, insurance):
     """Merges data from vitals, scheduling, and insurance sources."""
     merged_data = []
     for patient in vitals:
-        patient_id = patient.get("patient_id")
-        schedule = next((item for item in scheduling if item["patient_id"] == patient_id), {})
-        insurance_info = next((item for item in insurance if item["patient_id"] == patient_id), {})
+        patient_email = patient["personal_info"]["email"][0]
+        schedule = next((item for item in scheduling if item["patient_email"] == patient_email), {})
+        insurance_info = next((item for item in insurance if item["patient_email"] == patient_email), {})
 
         merged_patient = {
             **patient,
@@ -151,7 +151,7 @@ def main():
 
     # Save results to a CSV file
     fieldnames = [
-        "patient_id", "diagnosis", "icd_code", "prescription", "cpt_code",
+        "patient_email", "diagnosis", "icd_code", "prescription", "cpt_code",
         "Eye", "Onset_date", "Diagnosis_status", "SOD", "Severity",
         "appointment_date", "appointment_time", "insurance_provider",
         "policy_number", "coverage_details"
