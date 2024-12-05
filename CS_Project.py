@@ -48,7 +48,7 @@ def diagnose_patient(symptoms, icd_data):
     """Finds the best-matching ICD code for the given symptoms."""
     for row in icd_data:
         condition_symptoms = {row["symptom1"], row["symptom2"], row["symptom3"]}
-        if set(symptoms) & condition_symptoms:  # Check for symptom overlap
+        if len(set(symptoms) & condition_symptoms) > 1:  # Check for symptom overlap
             return (
                 row["condition"],
                 row["icd_code"],
