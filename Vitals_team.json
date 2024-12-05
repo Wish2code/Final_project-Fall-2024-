@@ -17,6 +17,11 @@
                 "Eye redness",
                 "irritation"
             ],
+            "symptoms":{
+                "Sypmtom1": "headache",
+                "Sypmtom2":"Eye redness",
+                "Sypmtom3":"irritation"
+            },
             "severity": [
                 "10246"
             ],
@@ -70,6 +75,11 @@
                 "inflammation",
                 "discomfort"
             ],
+            "symptoms": {
+                "Symptom1": "Chronic redness",
+                "Symptom2": "inflammation",
+                "Symptom3": "discomfort"
+            }
             "severity": [
                 "10245"
             ],
