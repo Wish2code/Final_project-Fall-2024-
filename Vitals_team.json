@@ -18,9 +18,9 @@
                 "irritation"
             ],
             "symptoms":{
-                "Sypmtom1": "headache",
-                "Sypmtom2":"Eye redness",
-                "Sypmtom3":"irritation"
+                "Symptom1": "headache",
+                "Symptom2":"Eye redness",
+                "Symptom3":"irritation"
             },
             "severity": [
                 "10246"
