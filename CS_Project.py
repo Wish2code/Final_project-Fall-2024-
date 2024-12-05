@@ -46,8 +46,6 @@ def write_csv(file_name, fieldnames, data):
 
 def diagnose_patient(symptoms, icd_data):
     """Finds the best-matching ICD code for the given symptoms."""
-    print()
-    print("symptoms in diagnose_patient:", symptoms)
     for row in icd_data:
         condition_symptoms = {row["symptom1"].strip(), row["symptom2"].strip(), row["symptom3"].strip()}
         if len(set(symptoms) & condition_symptoms) > 1:  # Check for symptom overlap
