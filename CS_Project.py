@@ -49,7 +49,7 @@ def diagnose_patient(symptoms, icd_data):
     print()
     print("symptoms in diagnose_patient:", symptoms)
     for row in icd_data:
-        condition_symptoms = {row["symptom1"], row["symptom2"], row["symptom3"]}
+        condition_symptoms = {row["symptom1"].strip(), row["symptom2"].strip(), row["symptom3"].strip()}
         print()
         print("condition_symptoms in diagnose_patient", condition_symptoms)
         print(set(symptoms) & condition_symptoms)
