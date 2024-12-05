@@ -50,9 +50,6 @@ def diagnose_patient(symptoms, icd_data):
     print("symptoms in diagnose_patient:", symptoms)
     for row in icd_data:
         condition_symptoms = {row["symptom1"].strip(), row["symptom2"].strip(), row["symptom3"].strip()}
-        print()
-        print("condition_symptoms in diagnose_patient", condition_symptoms)
-        print(set(symptoms) & condition_symptoms)
         if len(set(symptoms) & condition_symptoms) > 1:  # Check for symptom overlap
             return (
                 row["condition"],
@@ -80,7 +77,6 @@ def merge_patient_data(vitals, scheduling, insurance):
     merged_data = []
     for patient in vitals:
         patient_email = patient["personal_info"]["email"][0]
-        print(patient_email)
         schedule = next((item for item in scheduling if item["patient_email"] == patient_email), {})
         insurance_info = next((item for item in insurance if item["patient_email"] == patient_email), {})
 
