@@ -88,6 +88,8 @@ def merge_patient_data(vitals, scheduling, insurance):
             "coverage_details": insurance_info.get("coverage_details", "N/A"),
         }
         merged_data.append(merged_patient)
+    print()
+    print("merged data", merged_data)
     return merged_data
 
 
