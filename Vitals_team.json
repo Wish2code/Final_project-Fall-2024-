@@ -15,11 +15,11 @@
             "reason": [
                 "myopia"
             ],
-            "symptoms":{
-                "Symptom1": "headache",
-                "Symptom2":"Eye redness",
-                "Symptom3":"irritation"
-            },
+            "symptoms":[
+                "headache",
+                "Eye redness",
+                "irritation"
+            ],
             "severity": [
                 "10246"
             ],
@@ -72,10 +72,10 @@
                 "pink eye",
                 "general-eye-checkup"
             ],
-            "symptoms": {
-                "Symptom1": "Chronic redness",
-                "Symptom2": "inflammation",
-                "Symptom3": "discomfort"
+            "symptoms": [
+                "Chronic redness",
+                "inflammation",
+                "discomfort"
             },
             "severity": [
                 "10245"
