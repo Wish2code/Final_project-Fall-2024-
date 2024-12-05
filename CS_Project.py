@@ -75,6 +75,7 @@ def merge_patient_data(vitals, scheduling, insurance):
     merged_data = []
     for patient in vitals:
         patient_email = patient["personal_info"]["email"][0]
+        print(patient_email)
         schedule = next((item for item in scheduling if item["patient_email"] == patient_email), {})
         insurance_info = next((item for item in insurance if item["patient_email"] == patient_email), {})
 
