@@ -118,7 +118,7 @@ def main():
     # Prepare diagnosis results
     results = []
     for patient in merged_data:
-        patient_info = patient["patient_info"]
+        patient_info = patient["personal_info"]
         patient_email = patient_info["email"][0]
         symptoms = process_symptoms(patient)
 
