@@ -61,15 +61,6 @@ def diagnose_patient(symptoms, icd_data):
     return "Unknown", "DNE", "Unknown", "Unknown", "Unknown", "Unknown", "Unknown"
 
 
-def process_symptoms(patient):
-    """Extracts and processes symptoms from patient data."""
-    return [
-        patient.get("Symptom1", "").strip(),
-        patient.get("Symptom2", "").strip(),
-        patient.get("Symptom3", "").strip()
-    ]
-
-
 def merge_patient_data(vitals, scheduling, insurance):
     """Merges data from vitals, scheduling, and insurance sources."""
     merged_data = []
@@ -119,9 +110,8 @@ def main():
     for patient in merged_data:
         patient_info = patient["personal_info"]
         health_data = patient["health_data"]
-        symptom_data = health_data["symptoms"]
+        symptoms = health_data["symptoms"]
         patient_email = patient_info["email"][0]
-        symptoms = process_symptoms(symptom_data)
 
         # Diagnose based on symptoms
         diagnosis, icd_code, prescription, severity, SOD, diagnosis_status, insurance = diagnose_patient(symptoms, icd_cpt_data)
