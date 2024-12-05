@@ -13,7 +13,9 @@
         },
         "health_data": {
             "reason": [
-                "myopia"
+                "headache",
+                "Eye redness",
+                "irritation"
             ],
             "severity": [
                 "10246"
@@ -64,8 +66,10 @@
         },
         "health_data": {
             "reason": [
-                "pink eye",
-                "general-eye-checkup"
+                "Chronic redness",
+                "inflammation",
+                "discomfort",
+                
             ],
             "severity": [
                 "10245"
