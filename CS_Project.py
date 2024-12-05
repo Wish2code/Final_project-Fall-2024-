@@ -155,7 +155,7 @@ def main():
     # Save results to a CSV file
     fieldnames = [
         "patient_email", "diagnosis", "icd_code", "prescription", "cpt_code",
-        "Eye", "Onset_date", "Diagnosis_status", "SOD", "Severity",
+        "Eye", "Onset_date", "Diagnosis_status", "SOD", "Severity", "Insurance",
         "appointment_date", "appointment_time", "insurance_provider",
         "policy_number", "coverage_details"
     ]
