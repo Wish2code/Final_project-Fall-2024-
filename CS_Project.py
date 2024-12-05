@@ -113,6 +113,7 @@ def main():
 
     # Merge data
     merged_data = merge_patient_data(vitals_data, scheduling_data, insurance_data)
+    print(merged_data)
 
     # Prepare diagnosis results
     results = []
