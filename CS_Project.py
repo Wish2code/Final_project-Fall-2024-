@@ -119,9 +119,9 @@ def main():
     results = []
     for patient in merged_data:
         patient_info = patient["personal_info"]
-        sypmptoms = patient["health_data"]["symptoms"]
+        symptom_data = patient["health_data"]["symptoms"]
         patient_email = patient_info["email"][0]
-        symptoms = process_symptoms(symptoms)
+        symptoms = process_symptoms(symptom_data)
 
         # Diagnose based on symptoms
         diagnosis, icd_code, prescription, severity, SOD, diagnosis_status, insurance = diagnose_patient(symptoms, icd_cpt_data)
