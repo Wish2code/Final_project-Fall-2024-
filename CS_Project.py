@@ -64,9 +64,9 @@ def diagnose_patient(symptoms, icd_data):
 def process_symptoms(patient):
     """Extracts and processes symptoms from patient data."""
     return [
-        patient.get("symptom1", "").strip(),
-        patient.get("symptom2", "").strip(),
-        patient.get("symptom3", "").strip()
+        patient.get("Symptom1", "").strip(),
+        patient.get("Symptom2", "").strip(),
+        patient.get("Symptom3", "").strip()
     ]
 
 
@@ -119,7 +119,7 @@ def main():
     results = []
     for patient in merged_data:
         patient_info = patient["personal_info"]
-        sypmptoms = patient["symptoms"]
+        sypmptoms = patient["health_data"]["symptoms"]
         patient_email = patient_info["email"][0]
         symptoms = process_symptoms(patient)
 
