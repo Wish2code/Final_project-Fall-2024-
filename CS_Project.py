@@ -127,7 +127,8 @@ def main():
     results = []
     for patient in merged_data:
         patient_info = patient["personal_info"]
-        symptom_data = patient["health_data"]["symptoms"]
+        health_data = patient["health_data"]
+        symptom_data = healt_data["symptoms"]
         patient_email = patient_info["email"][0]
         symptoms = process_symptoms(symptom_data)
 
@@ -144,8 +145,8 @@ def main():
             "icd_code": icd_code,
             "prescription": prescription,
             "cpt_code": cpt_code,
-            "Eye": patient.get("Eye", "N/A"),
-            "Onset_date": patient.get("Onset_date", "N/A"),
+            "Eye": health_data["affected-eye"],
+            "Onset_date": health_data["onset"],
             "Insurance": insurance,
             "Diagnosis_status": diagnosis_status,
             "SOD": SOD,
