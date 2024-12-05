@@ -104,6 +104,8 @@ def main():
     insurance_data = read_json(insurance_file)
     icd_cpt_data = read_csv(icd_cpt_file)
 
+    print(vitals_data)
+
     # Validate data
     if not vitals_data or not icd_cpt_data:
         print("Error: Missing or incomplete data files. Please check your input files.")
