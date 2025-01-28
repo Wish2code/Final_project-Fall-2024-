@@ -1,4 +1,4 @@
-# Medical Diagnosis System
+# Eye Diagnosis System
 
 ## Overview
 This project processes medical data to diagnose patients based on their symptoms. It integrates multiple data sources (e.g., patient vitals, scheduling, and insurance information), performs symptom-based diagnosis using ICD codes, and saves the results in a CSV file. Users can optionally view the results in a well-formatted table.
